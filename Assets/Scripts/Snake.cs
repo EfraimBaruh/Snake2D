@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void DetectAction(Collider2D col)
     {
-        
+        switch (col.tag)
+        {
+            case "increase":
+                Debug.Log("increase");
+                break;
+            case "decrease":
+                Debug.Log("decrease");
+                break;
+            case "slowdown":
+                Debug.Log("slowdown");
+                break;
+            case "speedup":
+                Debug.Log("slowdown");
+                break;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
