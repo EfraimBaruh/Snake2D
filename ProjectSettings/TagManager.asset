@@ -8,6 +8,9 @@ TagManager:
   - decrease
   - slowdown
   - speedup
+  - tail
+  - reverse
+  - wall
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,11 @@ public class Movement : MonoBehaviour
     private Vector2 _direction;
     private float _currentVelocity;
     
+    public float CurrentVelocity
+    {
+        get { return _currentVelocity; }
+    }
+    
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -46,10 +51,10 @@ public class Movement : MonoBehaviour
         _direction = dir;
         MovementUpdate.Invoke();
     }
-    private void ChangeSpeed(float velocity)
+    public void ChangeSpeed(float velocity)
     {
         _currentVelocity = velocity;
-        UpdateVelocity();
+        MovementUpdate.Invoke();
     }
     private void UpdateVelocity()
     {
