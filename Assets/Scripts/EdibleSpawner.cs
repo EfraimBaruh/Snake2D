@@ -9,20 +9,22 @@ public class EdibleSpawner : MonoBehaviour
     [SerializeField] private float spawnTime;
 
     private Camera mainCamera;
+
+    private ScoreHandler scoreHandler;
     
     void Start()
     {
         mainCamera = Camera.main;
+        scoreHandler = FindObjectOfType<ScoreHandler>();
         StartCoroutine(SpawnEdible());
     }
 
 
     private IEnumerator SpawnEdible()
     {
-        Debug.Log("edible spawned");
         GameObject edible = Instantiate(this.edible, Utils.GetRandomPosition(mainCamera), Quaternion.identity);
         edible.GetComponent<EdibleLifeSpan>().EdibleLife = spawnTime;
-        edible.tag = Utils.GetEdibleTag();
+        edible.tag = Utils.GetEdibleTag(scoreHandler.ScoreValue);
 
         yield return new WaitForSeconds(spawnTime);
         

@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     public Action MovementUpdate;
     
-    [SerializeField] private float initialVelocity = 1f;
+    [SerializeField] private float initialVelocity = 10f;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _direction;
@@ -17,6 +17,11 @@ public class Movement : MonoBehaviour
     public float CurrentVelocity
     {
         get { return _currentVelocity; }
+    }
+
+    public float InitialVelocity
+    {
+        get { return initialVelocity; }
     }
     
     void Start()

@@ -9,6 +9,11 @@ public class ScoreHandler : MonoBehaviour
 
     private int scoreVal = 0;
 
+    public int ScoreValue
+    {
+        get { return scoreVal; }
+    }
+
     private void Score()
     {
         scoreVal++;

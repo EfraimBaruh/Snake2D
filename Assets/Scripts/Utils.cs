@@ -27,25 +27,35 @@ public class Utils : MonoBehaviour
     }
     
     /// <summary>
-    /// Return random position.
+    /// Return random position inside the walls.
     /// </summary>
     /// <param name="mainCamera"></param>
     /// <returns></returns>
     public static Vector2 GetRandomPosition(Camera mainCamera)
     {
+        // Return random inside the wallls.
+
+        float left = Screen.width / 5f;
+        float right = Screen.width * (10f / 12f);
+        float up = Screen.height * (13f / 15f);
+        float down = Screen.height / 14f;
+        
         float spawnY = Random.Range
-            (mainCamera.ScreenToWorldPoint(new Vector2(0, 0)).y, mainCamera.ScreenToWorldPoint(new Vector2(0, Screen.height)).y);
+            (mainCamera.ScreenToWorldPoint(new Vector2(0, down)).y, mainCamera.ScreenToWorldPoint(new Vector2(0, up)).y);
         float spawnX = Random.Range
-            (mainCamera.ScreenToWorldPoint(new Vector2(0, 0)).x, mainCamera.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x);
+            (mainCamera.ScreenToWorldPoint(new Vector2(left, 0)).x, mainCamera.ScreenToWorldPoint(new Vector2(right, 0)).x);
  
         Vector2 spawnPosition = new Vector2(spawnX, spawnY);
         return spawnPosition;
     }
 
-    public static string GetEdibleTag()
+    public static string GetEdibleTag(int score)
     {
+        // if score is less than 5, just increase the size.
+        if (score < 5)
+            return "increase";
+
         int randTag = Random.Range(0, 7);
-        
         switch (randTag)
         {
             case 0:
